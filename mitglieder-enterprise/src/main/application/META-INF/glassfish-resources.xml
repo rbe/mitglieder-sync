@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC "-//Sun Microsystems, Inc.//DTD Application Server 9.0 Resource Definitions //EN"
+        "http://www.sun.com/software/appserver/dtds/sun-resources_1_3.dtd">
+<resources>
+    <!--
+        Email
+    -->
+    <mail-resource debug="false" enabled="true"
+                   from="bvk@medienhof.de" host="mail.1ci.net"
+                   jndi-name="mail/mitglieder"
+                   object-type="user"
+                   store-protocol="imap"
+                   store-protocol-class="com.sun.mail.imap.IMAPStore"
+                   transport-protocol="smtp"
+                   transport-protocol-class="com.sun.mail.smtp.SMTPTransport"
+                   user="info">
+        <property name="mail.smtp.host" value="mail.1ci.net"/>
+        <property name="mail.smtp.port" value="465"/>
+        <property name="mail.smtp.socketFactory.class" value="javax.net.ssl.SSLSocketFactory"/>
+        <property name="mail.smtp.socketFactory.port" value="465"/>
+        <property name="mail.smtp.auth" value="true"/>
+        <property name="mail.smtp.user" value="bvk@medienhof.de"/>
+        <property name="mail.smtp.password" value="bvk48p7g"/>
+    </mail-resource>
+    <!--
+        JDBC
+    -->
+    <jdbc-resource enabled="true" object-type="user" jndi-name="jdbc/mitglieder" pool-name="jdbc/mitglieder-pool"/>
+    <jdbc-connection-pool name="jdbc/mitglieder-pool"
+                          allow-non-component-callers="false"
+                          associate-with-thread="false"
+                          connection-creation-retry-attempts="0"
+                          connection-creation-retry-interval-in-seconds="10"
+                          connection-leak-reclaim="false"
+                          connection-leak-timeout-in-seconds="0"
+                          connection-validation-method="auto-commit"
+                          datasource-classname="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource"
+                          fail-all-connections="false"
+                          idle-timeout-in-seconds="300"
+                          is-connection-validation-required="false"
+                          is-isolation-level-guaranteed="true"
+                          lazy-connection-association="false"
+                          lazy-connection-enlistment="false"
+                          match-connections="false"
+                          max-connection-usage-count="0"
+                          max-pool-size="32"
+                          max-wait-time-in-millis="60000"
+                          non-transactional-connections="false"
+                          pool-resize-quantity="2"
+                          res-type="javax.sql.ConnectionPoolDataSource"
+                          statement-timeout-in-seconds="-1"
+                          steady-pool-size="8"
+                          validate-atmost-once-period-in-seconds="0"
+                          wrap-jdbc-objects="false">
+        <property name="URL" value="jdbc:mysql://localhost:3306/bvk"/>
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="serverName" value="localhost"/>
+        <property name="portNumber" value="3306"/>
+        <property name="user" value="bvk_ws"/>
+        <property name="password" value="79HdbCPZKaH3UrPK"/>
+        <property name="databaseName" value="bvk"/>
+    </jdbc-connection-pool>
+</resources>

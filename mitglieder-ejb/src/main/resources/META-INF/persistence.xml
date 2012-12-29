@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+    <persistence-unit name="mitglieder" transaction-type="JTA">
+        <jta-data-source>jdbc/mitglieder</jta-data-source>
+        <class>eu.artofcoding.mitglieder.persistence.ProfileFields</class>
+        <class>eu.artofcoding.mitglieder.persistence.ProfileValues</class>
+        <class>eu.artofcoding.mitglieder.persistence.Role</class>
+        <class>eu.artofcoding.mitglieder.persistence.Users</class>
+        <class>eu.artofcoding.mitglieder.persistence.UsersRoles</class>
+        <class>eu.artofcoding.mitglieder.persistence.Vermittlersuche</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="eclipselink.ddl-generation" value="none"/>
+            <!-- logging, log JPA statements -->
+            <property name="eclipselink.logging.level" value="INFO"/>
+            <!-- also log of the values of the parameters used for the query -->
+            <property name="eclipselink.logging.parameters" value="false"/>
+            <!--
+                Error "primary keys should not be null", http://www.eclipse.org/forums/index.php/m/885235/
+            -->
+            <property name="eclipselink.jpa.uppercase-column-names" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

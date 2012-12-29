@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>eu.artofcoding.mitglieder</groupId>
+    <artifactId>mitglieder-web</artifactId>
+
+    <parent>
+        <groupId>eu.artofcoding.mitglieder</groupId>
+        <artifactId>mitglieder-server</artifactId>
+        <version>1.2.0</version>
+    </parent>
+
+    <!--
+        Project Information.
+    -->
+    <name>Mitglieder Web</name>
+    <url>http://www.art-of-coding</url>
+
+    <packaging>war</packaging>
+
+    <properties>
+        <!-- JavaServer Faces -->
+        <version.javax.faces-api>2.1</version.javax.faces-api>
+        <version.org.primefaces>3.4</version.org.primefaces>
+        <version.com.ocpsoft.prettyfaces-jsf2>3.3.3</version.com.ocpsoft.prettyfaces-jsf2>
+        <!-- Apache Commons -->
+        <version.org.apache.commons.io>2.4</version.org.apache.commons.io>
+        <version.org.apache.commons.fileupload>1.2.2</version.org.apache.commons.fileupload>
+    </properties>
+
+    <dependencies>
+        <!--
+            Java EE
+        -->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${version.javaee-api}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--
+            CDI.
+        -->
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>${version.javax.cdi}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--
+            JavaServer Faces.
+        -->
+        <dependency>
+            <groupId>javax.faces</groupId>
+            <artifactId>javax.faces-api</artifactId>
+            <version>${version.javax.faces-api}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--
+            Beetlejuice.
+        -->
+        <dependency>
+            <groupId>eu.artofcoding.beetlejuice</groupId>
+            <artifactId>beetlejuice-api</artifactId>
+            <version>${version.eu.artofcoding.beetlejuice}</version>
+        </dependency>
+        <dependency>
+            <groupId>eu.artofcoding.beetlejuice</groupId>
+            <artifactId>beetlejuice-web</artifactId>
+            <version>${version.eu.artofcoding.beetlejuice}</version>
+        </dependency>
+        <!--
+            Mitglieder.
+        -->
+        <dependency>
+            <groupId>eu.artofcoding.mitglieder</groupId>
+            <artifactId>mitglieder-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>eu.artofcoding.mitglieder</groupId>
+            <artifactId>mitglieder-drupaladapter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- maven-war-plugin -->
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${version.org.apache.maven.plugins.maven-war-plugin}</version>
+                <configuration>
+                    <!-- Java EE 6 doesn't require web.xml, Maven needs to catch up! -->
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <!-- maven-glassfish-plugin -->
+            <plugin>
+                <groupId>org.glassfish.maven.plugin</groupId>
+                <artifactId>maven-glassfish-plugin</artifactId>
+                <version>${version.org.glassfish.maven.plugin.maven-glassfish-plugin}</version>
+            </plugin>
+        </plugins>
+        <finalName>${project.artifactId}</finalName>
+    </build>
+
+</project>
