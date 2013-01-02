@@ -26,13 +26,16 @@
     </properties>
 
     <dependencies>
+        <!--
+            Mitglieder
+        -->
         <dependency>
             <groupId>eu.artofcoding.mitglieder</groupId>
             <artifactId>mitglieder-sync-desktop</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
-    
+
     <build>
         <resources>
             <resource>
