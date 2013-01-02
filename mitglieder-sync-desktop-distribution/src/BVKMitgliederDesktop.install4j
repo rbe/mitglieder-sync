@@ -21,11 +21,13 @@
     <mountPoints>
       <mountPoint id="26" root="" location="log" mode="755" />
       <mountPoint id="22" root="" location="" mode="755" />
+      <mountPoint id="74" root="" location="lib" mode="755" />
     </mountPoints>
     <entries>
-      <dirEntry mountPoint="22" file="../target/MitgliederDesktop" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" entryMode="direct" subDirectory="MitgliederDesktop" excludeSuffixes="" dirMode="755" overrideDirMode="false">
+      <dirEntry mountPoint="22" file="../target/MitgliederDesktop-1.2.0" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" entryMode="direct" subDirectory="MitgliederDesktop-1.2.0" excludeSuffixes="" dirMode="755" overrideDirMode="false">
         <exclude />
       </dirEntry>
+      <fileEntry mountPoint="74" file="../../lib/jtds-1.3.0-dist/x86/SSO/ntlmauth.dll" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="false" overrideOverwriteMode="false" overrideUninstallMode="false" />
     </entries>
     <components />
   </files>
@@ -49,7 +51,7 @@
       <includedFiles />
       <unextractableFiles />
       <vmOptionsFile mode="template" overwriteMode="0" fileMode="644">
-        <content />
+        <content>-Djava.library.path=lib</content>
       </vmOptionsFile>
       <customScript mode="1" file="">
         <content />
