@@ -50,7 +50,7 @@
       </java>
       <includedFiles />
       <unextractableFiles />
-      <vmOptionsFile mode="template" overwriteMode="0" fileMode="644">
+      <vmOptionsFile mode="content" overwriteMode="5" fileMode="644">
         <content>-Djava.library.path=lib</content>
       </vmOptionsFile>
       <customScript mode="1" file="">
