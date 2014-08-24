@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>eu.artofcoding.mitglieder</groupId>
+        <artifactId>eu.artofcoding.mitglieder</artifactId>
+        <version>LOCALBUILD</version>
+        <relativePath>..</relativePath>
+    </parent>
+    <artifactId>eu.artofcoding.mitglieder.sync.desktop.distribution</artifactId>
+    <packaging>pom</packaging>
+    <dependencies>
+        <!--
+            Mitglieder
+        -->
+        <dependency>
+            <groupId>eu.artofcoding.mitglieder</groupId>
+            <artifactId>eu.artofcoding.mitglieder.sync.desktop</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <!-- maven-assembly-plugin -->
+            <plugin>
+                <!-- http://maven.apache.org/plugins/maven-assembly-plugin/assembly.html -->
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${version.org.apache.maven.plugins.maven-assembly-plugin}</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/assembly/dist.xml</descriptor>
+                    </descriptors>
+                    <finalName>MitgliederDesktop-${project.version}</finalName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>eu.artofcoding.mitglieder</groupId>
+        <artifactId>eu.artofcoding.mitglieder</artifactId>
+        <version>LOCALBUILD</version>
+        <relativePath>..</relativePath>
+    </parent>
+    <artifactId>eu.artofcoding.mitglieder.enterprise</artifactId>
+    <packaging>ear</packaging>
+    <dependencies>
+        <!--
+            Mitglieder
+        -->
+        <dependency>
+            <groupId>eu.artofcoding.mitglieder</groupId>
+            <artifactId>eu.artofcoding.mitglieder.api</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>eu.artofcoding.mitglieder</groupId>
+            <artifactId>eu.artofcoding.mitglieder.ejb</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>eu.artofcoding.mitglieder</groupId>
+            <artifactId>eu.artofcoding.mitglieder.web</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <!-- maven-ear-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>${version.org.apache.maven.plugins.maven-ear-plugin}</version>
+                <configuration>
+                    <applicationName>mitglieder-enterprise</applicationName>
+                    <displayName>Mitglieder Web Service</displayName>
+                    <description>Mitglieder Navision-to-Drupal</description>
+                    <version>6</version>
+                    <initializeInOrder>true</initializeInOrder>
+                    <defaultJavaBundleDir>.</defaultJavaBundleDir>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <generateApplicationXml>true</generateApplicationXml>
+                    <!-- Modules -->
+                    <generateModuleId>true</generateModuleId>
+                    <modules>
+                        <!--
+                            Mitglieder.
+                        -->
+                        <!-- mitglieder-api -->
+                        <!--
+                        <jarModule>
+                            <groupId>eu.artofcoding.mitglieder</groupId>
+                            <artifactId>mitglieder-api</artifactId>
+                            <includeInApplicationXml>true</includeInApplicationXml>
+                            <bundleDir>.</bundleDir>
+                            <uri>mitglieder-api.jar</uri>
+                            <unpack>true</unpack>
+                        </jarModule>
+                        -->
+                        <!-- mitglieder-ejb -->
+                        <ejbModule>
+                            <groupId>eu.artofcoding.mitglieder</groupId>
+                            <artifactId>eu.artofcoding.mitglieder.ejb</artifactId>
+                            <unpack>true</unpack>
+                            <uri>mitglieder-ejb</uri>
+                        </ejbModule>
+                        <!-- mitglieder-web -->
+                        <webModule>
+                            <groupId>eu.artofcoding.mitglieder</groupId>
+                            <artifactId>eu.artofcoding.mitglieder.web</artifactId>
+                            <contextRoot>mitglieder</contextRoot>
+                            <uri>mitglieder-web</uri>
+                            <unpack>true</unpack>
+                        </webModule>
+                    </modules>
+                    <!-- Security. -->
+                    <!--
+                    <security>
+                        <security-role>
+                            <description>Administrator</description>
+                            <role-name>admin</role-name>
+                        </security-role>
+                        <security-role>
+                            <description>User</description>
+                            <role-name>user</role-name>
+                        </security-role>
+                    </security>
+                    -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
